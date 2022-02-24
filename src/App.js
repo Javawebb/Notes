@@ -1,17 +1,25 @@
 import { Notes } from './components/Notes'
+import {Add} from './components/Add'
 import styled from 'styled-components';
 import Bg from './bg.jpg'
 import {Brown} from './style/GlobalStyle'
 import {Black} from './style/GlobalStyle'
 import {Green} from './style/GlobalStyle'
 import {Red} from './style/GlobalStyle'
+import { Modal } from './components/Modal';
+import { useState } from 'react';
 function App() {
+  const[isOpenModal,setIsOpenModal] = useState(false)
   return (
     <AppStyle className="App">
       <h1 className="App-title">YOUR NOTES</h1>
       <div className="container">
         <Notes/>
       </div>
+      <Add setIsOpenModal={setIsOpenModal}/>
+      {
+        isOpenModal ? <Modal setIsOpenModal={setIsOpenModal}/> : ''
+      }
     </AppStyle>
   );
 }
